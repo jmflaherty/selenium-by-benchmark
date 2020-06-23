@@ -1,5 +1,5 @@
 /* Licensed under Apache-2.0 */
-package xpath.vs.css.benchmark
+package selenium.by.benchmark
 
 import java.util.concurrent.TimeUnit
 import kotlin.time.ExperimentalTime
@@ -20,7 +20,7 @@ data class Locator(
 
     fun calculateStats() {
         average = tries?.average()?.toLong()!!
-        median = tries?.sorted().let { (it!![it.size / 2] + it[(it.size - 1) / 2]) / 2 }
+        median = tries?.sorted().let { sortedList -> (sortedList!![sortedList.size / 2] + sortedList[(sortedList.size - 1) / 2]) / 2 }
         maximum = tries?.max()!!
         minimum = tries?.min()!!
         mean = (minimum + maximum) / 2

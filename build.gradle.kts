@@ -1,7 +1,7 @@
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType
 
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.3.72"
+    kotlin("jvm") version "1.3.72"
     id("com.diffplug.gradle.spotless") version "4.3.0"
     application
 }
@@ -36,12 +36,12 @@ repositories {
 }
 
 dependencies {
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.seleniumhq.selenium:selenium-java:4.0.0-alpha-6")
+    implementation(platform(kotlin("bom")))
+    implementation(kotlin("stdlib-jdk8"))
+    implementation("org.seleniumhq.selenium:selenium-java:3.141.59")
     implementation("io.github.bonigarcia:webdrivermanager:4.0.0")
 }
 
 application {
-    mainClassName = "xpath.vs.css.benchmark.AppKt"
+    mainClassName = "selenium.by.benchmark.AppKt"
 }
