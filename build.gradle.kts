@@ -1,5 +1,11 @@
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType
 
+project.ext.set("author", "Juan Manuel Flaherty")
+description = ""
+version = "1.0.0"
+project.ext.set("repository", "https://github.com/jmflaherty/selenium-by-benchmark")
+project.ext.set("license", "")
+
 plugins {
     kotlin("jvm") version "1.3.72"
     id("com.diffplug.gradle.spotless") version "4.3.0"

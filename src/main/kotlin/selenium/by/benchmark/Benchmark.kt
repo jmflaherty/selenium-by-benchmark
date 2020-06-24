@@ -16,27 +16,30 @@ class Benchmark(
     init {
         driversList.forEach { driverConstructor ->
             val driver: WebDriver = driverConstructor.invoke()
-            println((driver as RemoteWebDriver).capabilities.browserName.toUpperCase() +
-                    " " + driver.capabilities.version +
-                    " (" + driver.capabilities.platform.name + " " + driver.capabilities.platform.majorVersion + "." + driver.capabilities.platform.minorVersion + ")" +
-                    "\n")
-            locatorsList.forEach { website ->
-                driver.get(website.key)
-                website.value.forEach { locator ->
-                    locator.tries = benchmarkFindElement(driver, iterations, locator.locatorBy)
-                }
-            }
-            locatorsList.forEach { website ->
-                website.value.forEach { locator ->
-                    // ToDo: Use setters so I don't depend on internal access to properties,
-                    //  also use inversion of control, so the calculateStats func receives the locator and deals with it
-                    locator.calculateStats()
-                    locator.printStats() }
-            }
+            printDriver(driver)
+            benchmarkDriver(driver, locatorsList, iterations)
+            processLocatorsListStats(locatorsList)
             driver.quit()
         }
     }
-    private fun benchmarkFindElement(driver: WebDriver, iterations: Int, locator: By): List<Long> {
+
+    private fun printDriver(driver: WebDriver) {
+        println((driver as RemoteWebDriver).capabilities.browserName.toUpperCase() +
+                " " + driver.capabilities.version +
+                " (" + driver.capabilities.platform.name + " " + driver.capabilities.platform.majorVersion + "." + driver.capabilities.platform.minorVersion + ")" +
+                "\n")
+    }
+
+    private fun benchmarkDriver(driver: WebDriver, locatorsList: Map<String, List<Locator>>, iterations: Int) {
+        locatorsList.forEach { website ->
+            driver.get(website.key)
+            website.value.forEach { locator ->
+                locator.tries = benchmarkBy(driver, iterations, locator.locatorBy)
+            }
+        }
+    }
+
+    private fun benchmarkBy(driver: WebDriver, iterations: Int, locator: By): List<Long> {
         var startingTime: Long
         var endingTime: Long
         val trieList: MutableList<Long> = mutableListOf<Long>()
@@ -48,5 +51,15 @@ class Benchmark(
             trieList.add(endingTime - startingTime)
         }
         return trieList
+    }
+
+    private fun processLocatorsListStats(locatorsList: Map<String, List<Locator>>) {
+        locatorsList.forEach { website ->
+            website.value.forEach { locator ->
+                // ToDo: Use setters so I don't depend on internal access to properties,
+                //  also use inversion of control, so the calculateStats func receives the locator and deals with it
+                locator.calculateStats()
+                locator.printStats() }
+        }
     }
 }
