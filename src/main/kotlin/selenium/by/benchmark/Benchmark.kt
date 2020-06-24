@@ -2,27 +2,31 @@
 package selenium.by.benchmark
 
 import java.util.concurrent.TimeUnit
-import kotlin.io.println as println
 import kotlin.properties.Delegates
 import kotlin.time.ExperimentalTime
 import kotlin.time.toDuration
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
-import org.openqa.selenium.remote.RemoteWebDriver as RemoteWebDriver
+import org.openqa.selenium.remote.RemoteWebDriver
 
 @ExperimentalTime
 class Benchmark(
-    driversList: List<()-> WebDriver>,
+    driversList: List<() -> WebDriver>,
     locatorsList: Map<String, List<Locator>>,
     iterations: Int = 1000
 ) {
     init {
         driversList.forEach { driverConstructor ->
             val driver: WebDriver = driverConstructor.invoke()
-            printDriver(driver)
-            benchmarkDriver(driver, locatorsList, iterations)
-            processLocatorsListStats(locatorsList)
-            driver.quit()
+            try {
+                printDriver(driver)
+                benchmarkDriver(driver, locatorsList, iterations)
+                processLocatorsListStats(locatorsList)
+            } catch (exception: Exception) {
+                throw exception
+            } finally {
+                driver.quit()
+            }
         }
     }
 
@@ -46,15 +50,15 @@ class Benchmark(
     private fun benchmarkBy(driver: WebDriver, iterations: Int, locator: By): List<Long> {
         var startingTime: Long by Delegates.notNull<Long>()
         var endingTime: Long by Delegates.notNull<Long>()
-        val trieList: MutableList<Long> by Delegates.notNull<MutableList<Long>>()
+        val triesList: MutableList<Long> = mutableListOf<Long>()
 
         for (counter in 1..iterations) {
             startingTime = System.currentTimeMillis()
             driver.findElement(locator)
             endingTime = System.currentTimeMillis()
-            trieList.add(endingTime - startingTime)
+            triesList.add(endingTime - startingTime)
         }
-        return trieList
+        return triesList
     }
 
     private fun processLocatorsListStats(locatorsList: Map<String, List<Locator>>) {
