@@ -1,45 +1,18 @@
 /* Licensed under Apache-2.0 */
 package selenium.by.benchmark
 
-import java.util.concurrent.TimeUnit
-import kotlin.time.ExperimentalTime
-import kotlin.time.toDuration
+import kotlin.properties.Delegates
 import org.openqa.selenium.By
 
 data class Locator(
     val locatorName: String,
     val locatorBy: By
 ) {
-    var average: Long = 0
-    var median: Long = 0
-    var mean: Long = 0
-    var maximum: Long = 0
-    var minimum: Long = 9999999
-    var total: Long = 0
-    var tries: List<Long>? = listOf<Long>()
-
-    fun calculateStats() {
-        average = tries?.average()?.toLong()!!
-        median = tries?.sorted().let { sortedList -> (sortedList!![sortedList.size / 2] + sortedList[(sortedList.size - 1) / 2]) / 2 }
-        maximum = tries?.max()!!
-        minimum = tries?.min()!!
-        mean = (minimum + maximum) / 2
-        total = tries?.sum()!!
-    }
-
-    @ExperimentalTime
-    fun printStats() {
-        println("""
-            $locatorName
-            - $locatorBy
-            - Tries: ${tries?.size}
-            - Average: ${average.toDuration(TimeUnit.MILLISECONDS)}
-            - Median: ${median.toDuration(TimeUnit.MILLISECONDS)}
-            - Mean: ${mean.toDuration(TimeUnit.MILLISECONDS)}
-            - Maximum: ${maximum.toDuration(TimeUnit.MILLISECONDS)}
-            - Minimum: ${minimum.toDuration(TimeUnit.MILLISECONDS)}
-            - Total: ${total.toDuration(TimeUnit.MILLISECONDS)}
-
-        """.trimIndent())
-    }
+    var average: Long by Delegates.notNull<Long>()
+    var median: Long by Delegates.notNull<Long>()
+    var mean: Long by Delegates.notNull<Long>()
+    var maximum: Long by Delegates.notNull<Long>()
+    var minimum: Long by Delegates.notNull<Long>()
+    var total: Long by Delegates.notNull<Long>()
+    lateinit var tries: List<Long>
 }
