@@ -48,9 +48,9 @@ class Benchmark(
     }
 
     private fun benchmarkBy(driver: WebDriver, iterations: Int, locator: By): List<Long> {
-        var startingTime: Long by Delegates.notNull<Long>()
-        var endingTime: Long by Delegates.notNull<Long>()
-        val triesList: MutableList<Long> = mutableListOf<Long>()
+        var startingTime: Long by Delegates.notNull()
+        var endingTime: Long by Delegates.notNull()
+        val triesList: MutableList<Long> = mutableListOf()
 
         for (counter in 1..iterations) {
             startingTime = System.currentTimeMillis()

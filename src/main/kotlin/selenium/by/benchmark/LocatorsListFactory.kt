@@ -7,7 +7,7 @@ import org.openqa.selenium.By
 
 object LocatorsListFactory {
     fun createOriginalList(): Map<String, List<Locator>> {
-        return mapOf<String, List<Locator>>(
+        return mapOf(
                 Pair("https://www.w3.org/", listOf(
                         Locator("Bad - CSS", By.ByCssSelector("#w3c_main > div:nth-child(2) > ul:nth-child(3) > li:nth-child(7) > a")),
                         Locator("Good - CSS", By.ByCssSelector(".w3c_leftCol a[href='WoT/']")),
@@ -17,7 +17,7 @@ object LocatorsListFactory {
     }
 
     fun createRougouskiList(): Map<String, List<Locator>> {
-        return mapOf<String, List<Locator>>(
+        return mapOf(
                 Pair("https://www.w3.org/", listOf(
                         Locator("Bad - CSS", By.ByCssSelector("#w3c_main > div:nth-child(2) > ul:nth-child(3) > li:nth-child(7) > a")),
                         Locator("Good - CSS by Adrian Rougouski", By.ByCssSelector("[class='w3c_leftCol'] a[href='WoT/']")),
@@ -28,26 +28,21 @@ object LocatorsListFactory {
     }
 
     fun createListFromCSV(csvFile: String = "locatorsList.csv"): Map<String, List<Locator>> {
-        val locatorsList: MutableMap<String, MutableList<Locator>> = mutableMapOf<String, MutableList<Locator>>()
+        val locatorsList: MutableMap<String, MutableList<Locator>> = mutableMapOf()
         val reader: BufferedReader = File(csvFile).bufferedReader()
         reader.readLine()
         reader.forEachLine { line ->
             val locatorProperties: List<String> = line.split(",")
             if (locatorsList.containsKey(locatorProperties[0])) {
                 locatorsList.getValue(locatorProperties[0]).add(
-                        Locator(
-                                locatorName = locatorProperties[1],
-                                locatorBy = createBy(locatorProperties[2], locatorProperties[3])
-                        )
-                )
+                        Locator(locatorName = locatorProperties[1],
+                                locatorBy = createBy(locatorProperties[2], locatorProperties[3])))
             } else {
-                val list: MutableList<Locator> = mutableListOf<Locator>()
+                val list: MutableList<Locator> = mutableListOf()
                 list.add(
-                        Locator(
-                                locatorName = locatorProperties[1],
-                                locatorBy = createBy(locatorProperties[2], locatorProperties[3]))
-                )
-                locatorsList.put(locatorProperties[0], list)
+                        Locator(locatorName = locatorProperties[1],
+                                locatorBy = createBy(locatorProperties[2], locatorProperties[3])))
+                locatorsList[locatorProperties[0]] = list
             }
         }
         return locatorsList
