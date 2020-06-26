@@ -1,0 +1,6 @@
+website,name,selectorStrategy,selectorString
+https://www.w3.org/,Bad - CSS,ByCssSelector,#w3c_main > div:nth-child(2) > ul:nth-child(3) > li:nth-child(7) > a
+https://www.w3.org/,Good - CSS,ByCssSelector,.w3c_leftCol a[href='WoT/']
+https://www.w3.org/,Bad - XPath,ByXPath,//*[@id='w3c_main']/div[2]/ul[1]/li[7]/a
+https://www.w3.org/,Full path - XPath,ByXPath,/html/body/div[1]/div[2]/div[2]/ul[1]/li[7]/a
+https://www.w3.org/,Good - XPath,ByXPath,//div[@class='w3c_leftCol']//a[@href='WoT/']
