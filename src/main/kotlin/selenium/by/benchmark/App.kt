@@ -11,7 +11,6 @@ fun main() {
     // val locatorsList: Map<String, List<Locator>> = LocatorsListFactory.createOriginalList()
     // ToDo: 2. Implement another function using inversion of control over the stats to generate all the metrics
     //  and comparisons to declare the winners on different categories
-    // Benchmark(driversList, locatorsList, 10)
     Benchmark(
             driversList = listOf(Browsers.chrome, Browsers.firefox),
             // locatorsList = LocatorsListFactory.createOriginalList(),
