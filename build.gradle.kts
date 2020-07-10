@@ -1,15 +1,17 @@
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType
 
+description = "A lightweight library to benchmark Selenium By locators"
+version = "0.1.0"
 project.ext.set("author", "Juan Manuel Flaherty")
-description = ""
-version = "1.0.0"
+project.ext.set("linkedIn", "https://www.linkedin.com/in/juanmflaherty/")
 project.ext.set("repository", "https://github.com/jmflaherty/selenium-by-benchmark")
-project.ext.set("license", "")
+project.ext.set("license", "GNU LGPL v3")
+project.ext.set("licenseCopy", "https://www.gnu.org/licenses/lgpl-3.0.html")
 
 plugins {
     kotlin("jvm") version "1.3.72"
     id("com.diffplug.gradle.spotless") version "4.3.0"
-    application
+    `java-library`
 }
 
 tasks.wrapper {
@@ -24,8 +26,7 @@ spotless {
         trimTrailingWhitespace()
         indentWithSpaces()
         endWithNewline()
-        licenseHeader("/* Licensed under Apache-2.0 */") // License header
-        // licenseHeaderFile("path-to-license-file")    // License header file
+        licenseHeaderFile("LICENSE.NOTICE") // License header file
     }
     kotlinGradle {
         target("*.gradle.kts")
@@ -44,10 +45,16 @@ repositories {
 dependencies {
     implementation(platform(kotlin("bom")))
     implementation(kotlin("stdlib-jdk8"))
-    implementation("org.seleniumhq.selenium:selenium-java:3.141.59")
-    implementation("io.github.bonigarcia:webdrivermanager:4.0.0")
+    implementation("org.seleniumhq.jmflaherty.selenium:jmflaherty.selenium-java:3.141.59")
+
+    testImplementation(kotlin("test"))
+    testImplementation(kotlin("test-testng"))
+    testImplementation("io.github.bonigarcia:webdrivermanager:4.0.0")
 }
 
-application {
-    mainClassName = "selenium.by.benchmark.AppKt"
+tasks.test {
+    outputs.upToDateWhen { false }
+    useTestNG {
+        reports.html.isEnabled = true
+    }
 }

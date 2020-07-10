@@ -1,22 +1,37 @@
-/* Licensed under Apache-2.0 */
-package selenium.by.benchmark
+/* This file is part of Selenium-by-benchmark (https://github.com/jmflaherty/selenium-by-benchmark).
+
+Selenium-by-benchmark is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Selenium-by-benchmark is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with Selenium-by-benchmark.  If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>. */
+
+package jmflaherty.selenium_by_benchmark
 
 import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 import kotlin.time.toDuration
 
-@ExperimentalTime
-class StatsProcessor(locatorsList: Map<String, List<Locator>>) {
-    init {
+object StatsProcessor {
+    @ExperimentalTime
+    fun process(locatorsList: Map<String, List<Locator>>, printStats: Boolean): Map<String, List<Locator>> {
         locatorsList.forEach { website ->
             website.value.forEach { locator ->
-                calculateStats(locator)
-                printStats(locator)
+                calculateLocatorStats(locator)
+                if (printStats) printLocatorStats(locator)
             }
         }
+        return locatorsList
     }
 
-    private fun calculateStats(locator: Locator) {
+    private fun calculateLocatorStats(locator: Locator) {
         locator.average = locator.tries.average().toLong()
         locator.median = locator.tries.sorted().let { sortedList -> (sortedList[sortedList.size / 2] + sortedList[(sortedList.size - 1) / 2]) / 2 }
         locator.maximum = locator.tries.max()!!
@@ -25,7 +40,8 @@ class StatsProcessor(locatorsList: Map<String, List<Locator>>) {
         locator.total = locator.tries.sum()
     }
 
-    private fun printStats(locator: Locator) {
+    @ExperimentalTime
+    private fun printLocatorStats(locator: Locator) {
         println("""
             ${locator.locatorName}
             - ${locator.locatorBy}
