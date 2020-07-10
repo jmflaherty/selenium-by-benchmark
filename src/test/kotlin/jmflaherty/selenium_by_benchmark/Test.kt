@@ -43,6 +43,7 @@ class Test {
                 locatorsList = TestLocators.createOriginalList(),
                 iterations = 10,
                 printStats = true
+
         )
     }
 
