@@ -38,8 +38,8 @@ object StatsProcessor {
     private fun calculateLocatorStats(locator: Locator) {
         locator.average = locator.tries.average().toLong()
         locator.median = locator.tries.sorted().let { sortedList -> (sortedList[sortedList.size / 2] + sortedList[(sortedList.size - 1) / 2]) / 2 }
-        locator.maximum = locator.tries.max()!!
-        locator.minimum = locator.tries.min()!!
+        locator.maximum = locator.tries.maxOrNull()!!
+        locator.minimum = locator.tries.minOrNull()!!
         locator.mean = (locator.minimum + locator.maximum) / 2
         locator.total = locator.tries.sum()
     }

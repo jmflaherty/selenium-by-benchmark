@@ -153,7 +153,7 @@ object Benchmark {
     }
 
     private fun getDriverNameAndVersion(driver: WebDriver): String {
-        return "${(driver as RemoteWebDriver).capabilities.browserName.toUpperCase()} " +
+        return "${(driver as RemoteWebDriver).capabilities.browserName.uppercase()} " +
                 "${driver.capabilities.version} (${driver.capabilities.platform.name} " +
                 "${driver.capabilities.platform.majorVersion}" +
                 ".${driver.capabilities.platform.minorVersion})"
@@ -169,7 +169,7 @@ object Benchmark {
     private fun benchmarkBy(driver: WebDriver, locator: By, iterations: Int): List<Long> {
         val triesList: MutableList<Long> = mutableListOf()
         for (counter in 1..iterations) {
-            triesList.add(measureTime { driver.findElement(locator) }.toLongMilliseconds())
+            triesList.add(measureTime { driver.findElement(locator) }.inWholeMilliseconds)
         }
         return triesList
     }

@@ -18,24 +18,27 @@ package io.github.jmflaherty.selenium_by_benchmark
 
 import io.github.bonigarcia.wdm.WebDriverManager
 import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.chrome.ChromeOptions
 import org.openqa.selenium.edge.EdgeDriver
 import org.openqa.selenium.firefox.FirefoxDriver
+import org.openqa.selenium.firefox.FirefoxOptions
 import org.openqa.selenium.ie.InternetExplorerDriver
 import org.openqa.selenium.opera.OperaDriver
+import org.openqa.selenium.opera.OperaOptions
 import org.openqa.selenium.safari.SafariDriver
 
 object Browsers {
     val chrome: () -> ChromeDriver = {
         WebDriverManager.chromedriver().setup()
-        ChromeDriver()
+        ChromeDriver(ChromeOptions().addArguments("--headless"))
     }
     val firefox: () -> FirefoxDriver = {
         WebDriverManager.firefoxdriver().setup()
-        FirefoxDriver()
+        FirefoxDriver(FirefoxOptions().addArguments("--headless"))
     }
     val opera: () -> OperaDriver = {
         WebDriverManager.operadriver().setup()
-        OperaDriver()
+        OperaDriver(OperaOptions().addArguments("--headless"))
     }
     val edge: () -> EdgeDriver = {
         WebDriverManager.edgedriver().setup()

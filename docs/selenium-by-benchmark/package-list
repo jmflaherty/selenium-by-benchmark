@@ -1,0 +1,25 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark////PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/index.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/Benchmark///PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-benchmark/index.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/Benchmark/run/#kotlin.collections.List[kotlin.Function0[org.openqa.selenium.WebDriver]]#kotlin.String?#org.openqa.selenium.By#kotlin.Int#kotlin.Boolean/PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-benchmark/run.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/Benchmark/run/#kotlin.collections.List[kotlin.Function0[org.openqa.selenium.WebDriver]]#kotlin.collections.Map[kotlin.String,kotlin.collections.List[io.github.jmflaherty.selenium_by_benchmark.Locator]]#kotlin.Int#kotlin.Boolean/PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-benchmark/run.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/Benchmark/run/#org.openqa.selenium.WebDriver#kotlin.String?#org.openqa.selenium.By#kotlin.Int#kotlin.Boolean/PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-benchmark/run.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/Benchmark/run/#org.openqa.selenium.WebDriver#kotlin.collections.Map[kotlin.String,kotlin.collections.List[io.github.jmflaherty.selenium_by_benchmark.Locator]]#kotlin.Int#kotlin.Boolean/PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-benchmark/run.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/Locator///PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-locator/index.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/Locator/Locator/#kotlin.String#org.openqa.selenium.By/PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-locator/-locator.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/Locator/average/#/PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-locator/average.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/Locator/locatorBy/#/PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-locator/locator-by.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/Locator/locatorName/#/PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-locator/locator-name.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/Locator/maximum/#/PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-locator/maximum.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/Locator/mean/#/PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-locator/mean.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/Locator/median/#/PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-locator/median.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/Locator/minimum/#/PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-locator/minimum.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/Locator/total/#/PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-locator/total.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/Locator/tries/#/PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-locator/tries.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/LocatorsListFactory///PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-locators-list-factory/index.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/LocatorsListFactory/createListFromCSV/#java.io.File/PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-locators-list-factory/create-list-from-c-s-v.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/StatsProcessor///PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-stats-processor/index.html
+$dokka.location:io.github.jmflaherty.selenium_by_benchmark/StatsProcessor/process/#kotlin.collections.Map[kotlin.String,kotlin.collections.List[io.github.jmflaherty.selenium_by_benchmark.Locator]]#kotlin.Boolean/PointingToDeclaration/selenium-by-benchmark/io.github.jmflaherty.selenium_by_benchmark/-stats-processor/process.html
+io.github.jmflaherty.selenium_by_benchmark
+
