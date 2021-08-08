@@ -7,7 +7,7 @@ This JVM compatible library allows you to benchmark any Selenium element locator
 Selenium By Benchmark was completely developed in Kotlin by [Juan Manuel Flaherty](https://www.linkedin.com/in/juanmflaherty/) on May of 2020 and then released on July of the same year as free software under the [GNU LGPL-3.0](assets/lgpl-3.0.md) license.
 
 ## Compatibility
-[Documentation available through this link.](https://jmflaherty.github.io/selenium-by-benchmark/index.html)
+[Documentation available through this link.](https://jmflaherty.github.io/selenium-by-benchmark/docs/index.html)
 
 Selenium By Benchmark has officially only been validated to work on Kotlin 1.3.72+ and Java 1.6+, but it should with any Java compatible language, as Kotlin compiles to Java bytecode.
 
